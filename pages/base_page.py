@@ -3,6 +3,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
+from locators.base_page_locators import BasePageLocators
+
 
 class BasePage:
 
@@ -24,6 +26,14 @@ class BasePage:
         WebDriverWait(self.driver, 10).until(expected_conditions.number_of_windows_to_be(2))
         self.driver.switch_to.window(self.driver.window_handles[1])
         WebDriverWait(self.driver, 10).until(expected_conditions.url_contains('https://dzen.ru/'))
+
+    @allure.step("Кликаем на кнопку заказа вверху страницы")
+    def click_nav_order_button(self):
+        self.wait_and_find_element(BasePageLocators.HEADER_ORDER_BUTTON).click()
+
+    @allure.step("Кликаем на логотип Самоката")
+    def click_scooter_logo(self):
+        self.wait_and_find_element(BasePageLocators.SCOOTER_LOGO).click()
 
     @allure.step("Открываем страницу")
     def open_page(self, url):

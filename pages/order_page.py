@@ -66,6 +66,14 @@ class OrderPage(BasePage):
         button = self.wait_and_find_element(OrderPageLocators.ORDER_MODAL_BUTTON_YES)
         button.click()
 
+    @allure.step("Ждём окна об успешном создании заказа")
+    def wait_modal_window_is_displayed(self):
+        return self.wait_text_and_find_element(OrderPageLocators.ORDER_SUCCESS_MODAL, "Заказ оформлен").is_displayed()
+
+    @allure.step("Кликаем на кнопку проверки статуса заказа")
+    def click_status_order(self):
+        self.wait_and_find_element(OrderPageLocators.GET_STATUS_ORDER_BUTTON).click()
+
     @allure.step('Оформляем заказ')
     def make_order(self, name, surname, address, station, phone_number, date, period, color, comment):
         self.set_name_input(name)
