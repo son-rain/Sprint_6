@@ -66,6 +66,7 @@ class OrderPage(BasePage):
         button = self.wait_and_find_element(OrderPageLocators.ORDER_MODAL_BUTTON_YES)
         button.click()
 
+    @allure.step('Оформляем заказ')
     def make_order(self, name, surname, address, station, phone_number, date, period, color, comment):
         self.set_name_input(name)
         self.set_surname_input(surname)
