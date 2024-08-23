@@ -43,6 +43,10 @@ class BasePage:
     def click_scooter_logo(self):
         self.wait_and_find_element(BasePageLocators.SCOOTER_LOGO).click()
 
+    @allure.step("Читаем текущий URL страницы")
+    def get_current_url(self):
+        return self.driver.current_url
+
     @allure.step("Открываем страницу")
     def open_page(self, url):
         self.driver.get(url)

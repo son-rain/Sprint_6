@@ -9,7 +9,6 @@ from pages.main_page import MainPage
 
 
 class TestQuestion:
-
     @allure.title('Проверка ответов на Важные вопросы')
     @allure.description('Кликаем на вопросы и проверяем текст ответов')
     @pytest.mark.parametrize(ImportantQuestionData.param, ImportantQuestionData.value)

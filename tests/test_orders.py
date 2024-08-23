@@ -20,11 +20,11 @@ class TestOrders:
 
         order_page.click_status_order()
         order_page.click_scooter_logo()
-        assert driver.current_url == Urls.MAIN_PAGE
+        assert order_page.get_current_url() == Urls.MAIN_PAGE
 
         main_page.click_yandex_logo()
         main_page.wait_dzen_page()
-        assert driver.current_url == Urls.DZEN_PAGE
+        assert order_page.get_current_url() == Urls.DZEN_PAGE
 
     @allure.title('Проверка оформления заказа через кнопку внизу страницы')
     def test_middle_order_button(self, driver):
@@ -40,8 +40,8 @@ class TestOrders:
 
         order_page.click_status_order()
         order_page.click_scooter_logo()
-        assert driver.current_url == Urls.MAIN_PAGE
+        assert order_page.get_current_url() == Urls.MAIN_PAGE
 
         main_page.click_yandex_logo()
         main_page.wait_dzen_page()
-        assert driver.current_url == Urls.DZEN_PAGE
+        assert order_page.get_current_url() == Urls.DZEN_PAGE
