@@ -11,10 +11,18 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    @allure.step("Находим элемент на странице")
+    @allure.step("Находим элемент на странице и ожидаем его видимости")
     def wait_and_find_element(self, locator) -> WebElement:
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
+
+    @allure.step("Ожидаем видимости элемента на странице")
+    def wait_element(self, locator):
+        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
+
+    @allure.step("Скроллим к элементу")
+    def scroll_to_element(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
 
     @allure.step("Находим элемент на странице по локатору и тексту")
     def wait_text_and_find_element(self, locator, text) -> WebElement:

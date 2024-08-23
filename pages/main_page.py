@@ -12,8 +12,8 @@ class MainPage(BasePage):
     def get_important_answer_heading_and_click(self, question):
         locator = MainPageLocators.get_question_heading(question)
         question_heading = self.wait_and_find_element(locator)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", question_heading)
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
+        self.scroll_to_element(question_heading)
+        self.wait_element(locator)
         question_heading.click()
 
     @allure.step("Получаем текст ответа на вопрос")
@@ -28,8 +28,8 @@ class MainPage(BasePage):
     def click_middle_order_button(self):
         locator = MainPageLocators.HOME_FINISH_ORDER_BUTTON
         order_button = self.wait_and_find_element(locator)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", order_button)
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
+        self.scroll_to_element(order_button)
+        self.wait_element(locator)
         order_button.click()
 
 
